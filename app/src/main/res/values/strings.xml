@@ -4,4 +4,5 @@
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_signup">SignupActivity</string>
     <string name="title_activity_main">Questions to Ask Based on Location</string>
+    <string name="title_activity_restaurant">Restaurant</string>
 </resources>
