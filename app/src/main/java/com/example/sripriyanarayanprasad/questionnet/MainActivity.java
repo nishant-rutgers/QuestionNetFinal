@@ -162,11 +162,11 @@ public class MainActivity extends FragmentActivity implements OnCameraChangeList
         super.onStart();
     }
 
-    @Override
-    protected void onStop() {
-        mGeofenceStore.disconnect();
-        super.onStop();
-    }
+    //@Override
+    //protected void onStop() {
+        //mGeofenceStore.disconnect();
+        //super.onStop();
+    //}
 
    // @Override
    // protected void onResume() {
