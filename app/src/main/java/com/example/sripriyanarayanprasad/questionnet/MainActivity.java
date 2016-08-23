@@ -2,6 +2,7 @@ package com.example.sripriyanarayanprasad.questionnet;
 
 import java.util.ArrayList;
 
+import com.example.sripriyanarayanprasad.questionnet.FileUpload.FileUploadActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.Geofence;
@@ -23,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
+
 import java.util.HashMap;
 
 import android.app.Activity;
@@ -48,9 +50,6 @@ public class MainActivity extends FragmentActivity implements OnCameraChangeList
         }
         return super.onOptionsItemSelected(item);
     }
-
-
-
 
     private GoogleMap mMap;
     ArrayList<Geofence> mGeofences;
@@ -98,12 +97,19 @@ public class MainActivity extends FragmentActivity implements OnCameraChangeList
                 logoutUser();
             }
         });
+
+        ((Button) findViewById(R.id.button4)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this, FileUploadActivity.class));
+            }
+        });
     }
 
     /**
      * Logging out the user. Will set isLoggedIn flag to false in shared
      * preferences Clears the user data from sqlite users table
-     * */
+     */
     private void logoutUser() {
         session.setLogin(false);
 
@@ -113,8 +119,6 @@ public class MainActivity extends FragmentActivity implements OnCameraChangeList
         Intent intent = new Intent(MainActivity.this, LoginActivity.class);
         startActivity(intent);
         finish();
-
-
 
 
         // Initializing variables
@@ -194,36 +198,36 @@ public class MainActivity extends FragmentActivity implements OnCameraChangeList
 
     //@Override
     //protected void onStop() {
-        //mGeofenceStore.disconnect();
-        //super.onStop();
+    //mGeofenceStore.disconnect();
+    //super.onStop();
     //}
 
-   // @Override
-   // protected void onResume() {
-     //   super.onResume();
-     //   if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
-         //   setUpMapIfNeeded();
-      //  } else {
-          //  GooglePlayServicesUtil.getErrorDialog(
-                 //   GooglePlayServicesUtil.isGooglePlayServicesAvailable(this),
-                  //  this, 0);
-      //  }
-  //  }
+    // @Override
+    // protected void onResume() {
+    //   super.onResume();
+    //   if (GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) == ConnectionResult.SUCCESS) {
+    //   setUpMapIfNeeded();
+    //  } else {
+    //  GooglePlayServicesUtil.getErrorDialog(
+    //   GooglePlayServicesUtil.isGooglePlayServicesAvailable(this),
+    //  this, 0);
+    //  }
+    //  }
 
     //private void setUpMapIfNeeded() {
-        // Do a null check to confirm that we have not already instantiated the
-        // map.
-       // if (mMap == null) {
-            // Try to obtain the map from the SupportMapFragment.
-           // mMap = ((SupportMapFragment) getSupportFragmentManager()
-                   // .findFragmentById(R.id.map)).getMap();
+    // Do a null check to confirm that we have not already instantiated the
+    // map.
+    // if (mMap == null) {
+    // Try to obtain the map from the SupportMapFragment.
+    // mMap = ((SupportMapFragment) getSupportFragmentManager()
+    // .findFragmentById(R.id.map)).getMap();
 
-            // Check if we were successful in obtaining the map.
-           // if (mMap != null) {
-               // setUpMap();
-           // }
-      //  }
-   // }
+    // Check if we were successful in obtaining the map.
+    // if (mMap != null) {
+    // setUpMap();
+    // }
+    //  }
+    // }
 
     /**
      * This is where we can add markers or lines, add listeners or move the
@@ -259,7 +263,7 @@ public class MainActivity extends FragmentActivity implements OnCameraChangeList
     @Override
     public void onCameraChange(CameraPosition position) {
         // Makes sure the visuals remain when zoom changes.
-        for(int i = 0; i < mGeofenceCoordinates.size(); i++) {
+        for (int i = 0; i < mGeofenceCoordinates.size(); i++) {
             mMap.addCircle(new CircleOptions().center(mGeofenceCoordinates.get(i))
                     .radius(mGeofenceRadius.get(i).intValue())
                     .fillColor(0x40ff0000)

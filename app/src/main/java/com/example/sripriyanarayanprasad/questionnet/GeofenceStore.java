@@ -123,16 +123,16 @@ public class GeofenceStore implements ConnectionCallbacks,
 
         // This is for debugging only and does not affect
         // geofencing.
-        LocationServices.FusedLocationApi.requestLocationUpdates(
-                mGoogleApiClient, mLocationRequest, this);
+       // LocationServices.FusedLocationApi.requestLocationUpdates(
+               // mGoogleApiClient, mLocationRequest, this);
 
         // Submitting the request to monitor geofences.
-        PendingResult<Status> pendingResult = LocationServices.GeofencingApi
-                .addGeofences(mGoogleApiClient, mGeofencingRequest,
-                        mPendingIntent);
+       // PendingResult<Status> pendingResult = LocationServices.GeofencingApi
+               // .addGeofences(mGoogleApiClient, mGeofencingRequest,
+                      //  mPendingIntent);
 
         // Set the result callbacks listener to this class.
-        pendingResult.setResultCallback(this);
+      //  pendingResult.setResultCallback(this);
     }
 
     @Override
